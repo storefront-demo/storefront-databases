@@ -10,6 +10,9 @@ metadata:
     release: "bluecompute"
     heritage: "Helm"
 spec:
+  selector:
+    matchLabels:
+      app: inventory-mysql
   template:
     metadata:
       labels:
