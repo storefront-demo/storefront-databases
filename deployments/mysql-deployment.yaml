@@ -26,10 +26,10 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /var/lib/mysql
-      
+
       containers:
       - name: inventory-mysql
-        image: "mysql:5.7.14"
+        image: "mysql"
         imagePullPolicy: "IfNotPresent"
         resources:
           requests:
@@ -81,7 +81,7 @@ spec:
         # - name: extras
         #   mountPath: /usr/share/extras
         #   readOnly: true
-        
+
       volumes:
       - name: data
         emptyDir: {}

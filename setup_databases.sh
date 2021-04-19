@@ -84,7 +84,7 @@ function populate_db() {
 
   # Check deployment rollout status every 10 seconds (max 10 minutes) until complete.
   ATTEMPTS=0
-  MYSQL_ROLLOUT_STATUS_CMD="oc wait --for=condition=complete --timeout=30s job/inventory-ms-spring-populate-mysql -n ${NAMESPACE}"
+  MYSQL_ROLLOUT_STATUS_CMD="oc wait --for=condition=complete --timeout=30s job/inventory-populate-mysql -n ${NAMESPACE}"
   until $MYSQL_ROLLOUT_STATUS_CMD || [ $ATTEMPTS -eq 60 ]; do
     $MYSQL_ROLLOUT_STATUS_CMD
     ATTEMPTS=$((attempts + 1))
@@ -93,7 +93,7 @@ function populate_db() {
 
 	# Check deployment rollout status every 10 seconds (max 10 minutes) until complete.
   ATTEMPTS=0
-  COUCHDB_ROLLOUT_STATUS_CMD="oc wait --for=condition=complete --timeout=30s job/customer-ms-spring-create-user -n ${NAMESPACE}"
+  COUCHDB_ROLLOUT_STATUS_CMD="oc wait --for=condition=complete --timeout=30s job/customer-create-user -n ${NAMESPACE}"
   until $COUCHDB_ROLLOUT_STATUS_CMD || [ $ATTEMPTS -eq 60 ]; do
     $COUCHDB_ROLLOUT_STATUS_CMD
     ATTEMPTS=$((attempts + 1))

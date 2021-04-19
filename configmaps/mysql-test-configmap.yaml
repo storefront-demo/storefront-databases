@@ -6,9 +6,6 @@ metadata:
   name: inventory-mysql-test
   labels:
     app: inventory-mysql
-    chart: "mysql-0.15.0"
-    heritage: "Helm"
-    release: "bluecompute"
 data:
   run.sh: |-
     @test "Testing MySQL Connection" {

@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: inventory-ms-spring-data
+  name: inventory-ms-data
   labels:
-    app: "inventory-ms-spring"
+    app: "inventory"
 data:
   mysql_data.sql: |-
     create database if not exists inventorydb;

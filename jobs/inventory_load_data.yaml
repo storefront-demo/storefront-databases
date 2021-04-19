@@ -1,20 +1,20 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: inventory-ms-spring-populate-mysql
+  name: inventory-populate-mysql
   labels:
-    app: "inventory-ms-spring"
+    app: "inventory"
 spec:
   template:
     metadata:
-      name: inventory-ms-spring-populate-mysql
+      name: inventory-populate-mysql
       labels:
-        app: "inventory-ms-spring"
+        app: "inventory"
     spec:
       restartPolicy: Never
       initContainers:
       - name: test-mysql
-        image: mysql:5.7.14
+        image: mysql:latest
         imagePullPolicy: IfNotPresent
         command:
         - "/bin/bash"
@@ -45,7 +45,7 @@ spec:
               key: mysql-password
       containers:
       - name: populate-mysql
-        image: mysql:5.7.14
+        image: mysql:latest
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - mountPath: /config
@@ -81,7 +81,7 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: inventory-ms-spring-data
+          name: inventory-ms-data
       - name: db-data
         emptyDir:
           medium: "Memory"
