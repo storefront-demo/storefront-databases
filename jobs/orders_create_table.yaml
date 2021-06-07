@@ -1,4 +1,3 @@
-TBD
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -42,8 +41,8 @@ spec:
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: inventory-mysql
-              key: mysql-password
+              name: orders-mariadb-secret
+              key: mariadb-password
       containers:
       - name: create-table
         image: docker.io/bitnami/mariadb:10.1.38
@@ -77,8 +76,8 @@ spec:
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: inventory-mysql
-              key: mysql-password
+              name: orders-mariadb-secret
+              key: mariadb-password
       volumes:
       - name: config
         configMap:
